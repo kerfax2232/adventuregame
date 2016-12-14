@@ -18,12 +18,30 @@ class Engine(object):
         self.scene_map = scene_map
 
     def play(self):
+    	# This will start the game with the opening scene
         current_scene = self.scene_map.opening_scene()
+        #This determines the last scene
         last_scene = self.scene_map.next_scene('finished')
 
+        # Saying while scene is not the last scene, go to next scene
         while current_scene != last_scene:
             next_scene_name = current_scene.enter()
             current_scene = self.scene_map.next_scene(next_scene_name)
 
         # be sure to print out the last scene
         current_scene.enter()
+
+class Awake(Scene):
+
+	#This is a list of attempted witty sayings
+    pun = [
+        "You could have done so much better -- if you only had a brain",
+         "Next time do the same thing.  But better",
+         "Thanks for losing the war.  America will have to wait for the next revolution until it becomes great again",
+         "Well, at least you can go back to playing Pokemon Go!"
+    ]
+
+    def enter(self):
+    	# Since starting point is 0, -1 is added to only allow for puns 
+        print Awake.pun[randint(0, len(self.pun)-1)]
+        exit(1)
