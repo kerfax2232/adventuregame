@@ -76,12 +76,13 @@ class BritishCamp(Scene):
 
     def enter(self):
     	british_intro = open("british_camp_intro.txt")
+    	print(british_intro.read())
         password = "%d" % (randint(1,5))
         guess = raw_input ("What is your guess? > ")
         guesses = 0
 
         #Saying while guess is under this amount of guesses, print/do this
-        while guess != password and guesses < 2:
+        while guess != password and guesses < 5:
             print '"Try again lad/lass."  The general and his guards begin to encircle you, wary of your true identity'  
             guesses += 1
             guess = raw_input("What is your guess?> ")
@@ -90,14 +91,34 @@ class BritishCamp(Scene):
         if guess == password:
             print '"We\'ve been waiting for you!  However, we don\'t actually have the map.  Go further into the camp.'
             print 'You\'ll have to solve a math problem for them to get the map of troop movements"'
-            return 'country_saved'
+            return 'obtaining_map'
         
         #If guess is wrong after specified amount of guesses
         else:
             print #story for failure to win the game
             return 'awake'
 
-#Class for another map scene, this one using addition of some sort
+class ObtainingMap(Scene):
+	def enter(self):
+		num1 = randint(0,10)
+		num2 = randint(0,10)
+		ans = num1+num2
+		guesses = 0
+		print "Try to answer this:"
+		print(num1,"+", num2)
+		player_answer = int(input("What's the answer?"))
+		while player_answer != ans and guesses < 2:
+			print "Try again lad/lass.  Although if you can't answer basic maths I wonder if you can read this map."
+			guesses += 1
+			player_answer = int(input("What's the answer?"))
+
+		if player_answer == ans:
+			print "Here\'s your map!  God Save the King!"
+			#return 'country_saved'
+
+		else:
+			print "You've failed at obtaining the map.  However, you didn't fail at playing this game, and isn't that what's important?"
+			return 'awake'
 
 #Put in finishing/winning response
 
@@ -108,7 +129,7 @@ class Map(object):
     	#remember to put the comma at the end genius
         "opening_scene": OpeningScene(),
         "british_camp": BritishCamp(),
-        #getting the map finally
+        "obtaining_map": ObtainingMap(),
         "awake": Awake(),
         #"country_saved": CountrySaved(),
     }

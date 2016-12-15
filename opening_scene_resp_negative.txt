@@ -12,6 +12,7 @@ than a number between 1 and 5.  Give the correct number
 and they will give you papers regarding their troop 
 movements.  Get those papers back to us"
 
-"Wow, only a 5-digit code?" You think to yourself.
+"Wow, only a 1-digit code up to 5?" You think to yourself. "No wonder
+these guys lost to us."
 
 Given no choice, you head out to the camp...
