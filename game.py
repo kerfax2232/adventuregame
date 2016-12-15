@@ -70,6 +70,11 @@ class OpeningScene(Scene):
 			print(opening_scene_positive.read())
 			return 'british_camp'
 
+		#Without else traceback error is thrown with wrong answer
+        else:
+			print "Please use American English. (And check that everything is in lowecase!)"
+			return 'opening_scene'
+
 
 
 class BritishCamp(Scene):
@@ -91,7 +96,7 @@ class BritishCamp(Scene):
         if guess == password:
             print '"We\'ve been waiting for you!  However, we don\'t actually have the map.  Go further into the camp.'
             print 'You\'ll have to solve a math problem for them to get the map of troop movements"'
-            return 'obtaining_map'
+            return 'obtaining_map '
         
         #If guess is wrong after specified amount of guesses
         else:
