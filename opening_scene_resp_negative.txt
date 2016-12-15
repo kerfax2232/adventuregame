@@ -1,0 +1,17 @@
+"Too bad, Private," George Washington barks, 
+"Did you really think you could exit this strange
+game/fantasy with one answer?  You have some
+programming skills to try to show off.  Besides,
+you're going to go and win this war for us."
+
+"You'll be travelling to a British encampment," he 
+continues.  "By any means at your disposal get into
+the camp.  Some existing spies tell us they're awaiting
+a covert agent from Britain.  No one knows him other
+than a number between 1 and 5.  Give the correct number
+and they will give you papers regarding their troop 
+movements.  Get those papers back to us"
+
+"Wow, only a 5-digit code?" You think to yourself.
+
+Given no choice, you head out to the camp...

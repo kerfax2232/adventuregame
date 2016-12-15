@@ -18,4 +18,9 @@ I'm actually Canadian.
 Ok, I'm in.
 I just want to sleep.
 
-Which do you choose?  The fate of America depends on your answer
+Type in any of the following:
+Canadian
+I'm in
+Sleep
+
+Which will you choose?  The fate of America depends on your answer.
