@@ -29,7 +29,6 @@ class Engine(object):
             next_scene_name = current_scene.enter()
             current_scene = self.scene_map.next_scene(next_scene_name)
 
-        # be sure to print out the last scene
         current_scene.enter()
 
 class Awake(Scene):
@@ -89,22 +88,23 @@ class BritishCamp(Scene):
         #Saying while guess is under this amount of guesses, print/do this
         while guess != password and guesses < 5:
             print '"Try again lad/lass."  The general and his guards begin to encircle you, wary of your true identity'  
-            guesses += 1
+            guesses += 1 # increases 
             guess = raw_input("What is your guess?> ")
 
         #If guess is correct
         if guess == password:
             print '"We\'ve been waiting for you!  However, we don\'t actually have the map.  Go further into the camp.'
             print 'You\'ll have to solve a math problem for them to get the map of troop movements"'
-            return 'obtaining_map '
+            return 'obtaining_map'
         
         #If guess is wrong after specified amount of guesses
         else:
-            print #story for failure to win the game
+            #print #story for failure to win the game
             return 'awake'
 
 class ObtainingMap(Scene):
-	def enter(self):
+	
+    def enter(self):
 		num1 = randint(0,10)
 		num2 = randint(0,10)
 		ans = num1+num2
@@ -119,13 +119,19 @@ class ObtainingMap(Scene):
 
 		if player_answer == ans:
 			print "Here\'s your map!  God Save the King!"
-			#return 'country_saved'
+			return 'country_saved'
 
 		else:
 			print "You've failed at obtaining the map.  However, you didn't fail at playing this game, and isn't that what's important?"
 			return 'awake'
 
 #Put in finishing/winning response
+class CountrySaved(Scene):
+    
+    def enter(self):
+        end_scene = open("end_scene.txt")
+        print(end_scene.read())
+        return exit()
 
 # Class defines the scene names, changing scenes, etc
 class Map(object):
@@ -136,7 +142,7 @@ class Map(object):
         "british_camp": BritishCamp(),
         "obtaining_map": ObtainingMap(),
         "awake": Awake(),
-        #"country_saved": CountrySaved(),
+        "country_saved": CountrySaved(),
     }
 
 
@@ -154,6 +160,6 @@ class Map(object):
 
 #Starts game at opening scene
 a_map = Map('opening_scene')
-# ties game.play to the 
+# ties game.play to the engine which initiates gameplay
 a_game = Engine(a_map)
 a_game.play()
